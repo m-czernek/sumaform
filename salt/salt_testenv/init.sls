@@ -37,7 +37,7 @@ containers_updates_repo:
 {% endif %}
 
 {% if grains['osrelease_info'][1] >= 3 %}
-{% set repo_path = grains["osrelease"] %}
+{% set repo_path = "SLE15/SLE_15" %}
 {% else %}
 {% set repo_path = "SLE_15_SP" + grains["osrelease_info"][1]|string %}
 {% endif %}
