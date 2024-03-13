@@ -130,9 +130,11 @@ salt_bundle_testsuite_repo:
 {% endif %}
     - refresh: True
 
-install_salt_bundle_testsuite:
+remove_old_minion:
   pkg.removed:
     - name: venv-salt-minion
+
+install_salt_bundle_testsuite:
   pkg.installed:
     - name: venv-salt-minion-testsuite
     - require:
