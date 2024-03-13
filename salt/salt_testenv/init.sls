@@ -110,7 +110,7 @@ install_salt_testsuite:
 {% elif grains["salt_obs_flavor"] == "products:next" %}
     {% set salt_flavor_path = "bundle:next" %}
 {% elif grains["salt_obs_flavor"] == "products:next:python311" %}
-    {% set salt_flavor_path = "bundle:next:python311:" %}
+    {% set salt_flavor_path = "bundle:next:python311" %}
 {% else %}
     {{ raise("Unknown salt_obs_flavor set") }}
 {% endif %}
