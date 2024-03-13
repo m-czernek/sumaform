@@ -135,3 +135,5 @@ install_salt_bundle_testsuite:
     - name: venv-salt-minion-testsuite
     - require:
       - pkgrepo: salt_bundle_testsuite_repo
+  cmd.run:
+    - name: systemctl restart venv-salt-minion
