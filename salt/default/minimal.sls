@@ -23,11 +23,11 @@ minimal_package_update:
 {% else %}
   pkg.latest:
     - pkgs:
-{% if grains['install_salt_bundle'] %}
+{# {% if grains['install_salt_bundle'] %}
       - venv-salt-minion
 {% else %}
       - salt-minion
-{% endif %}
+{% endif %} #}
 {% if grains['os_family'] == 'Suse' %}
       - zypper
       - libzypp

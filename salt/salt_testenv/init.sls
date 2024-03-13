@@ -1,10 +1,6 @@
 include:
   - default
 
-remove_old_minion:
-  pkg.removed:
-    - name: venv-salt-minion
-
 {% if grains['os'] == 'SUSE' and grains['osrelease_info'][0] == 15 %}
 {% if grains['osfullname'] == 'SLES' %}
 {% set repo_path = "15" if grains["osrelease"] == 15 else "15-SP" + grains["osrelease_info"][1]|string %}
