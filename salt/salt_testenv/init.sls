@@ -37,7 +37,7 @@ containers_updates_repo:
 {% endif %}
 
 {% if grains['osrelease_info'][1] >= 3 %}
-{% set repo_path = "SLE15/SLE_15" %}
+{% set repo_path = grains['osrelease'] %}
 {% else %}
 {% set repo_path = "SLE_15_SP" + grains["osrelease_info"][1]|string %}
 {% endif %}
@@ -51,10 +51,10 @@ salt_testsuite_dependencies_repo:
 
 salt_testing_repo:
   pkgrepo.managed:
-    - baseurl: http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/repositories/systemsmanagement:saltstack:{{ grains["salt_obs_flavor"] }}/{{ repo_path }}/
+    - baseurl: http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/repositories/systemsmanagement:saltstack:products:next/{{ repo_path }}/
     - refresh: True
     - gpgcheck: 0
-    - gpgkey: http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/repositories/systemsmanagement:saltstack:{{ grains["salt_obs_flavor"] }}/{{ repo_path }}/repodata/repomd.xml.key
+    - gpgkey: http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/repositories/systemsmanagement:saltstack:products:next/{{ repo_path }}/repodata/repomd.xml.key
 
 install_salt_testsuite:
   pkg.installed:
@@ -111,6 +111,7 @@ install_salt_testsuite:
     {% set salt_flavor_path = "bundle:next" %}
 {% elif grains["salt_obs_flavor"] == "bundle:next:python311" %}
     {% set salt_flavor_path = "bundle:next:python311" %}
+    {% set repo_path = 'SLE_15' %}
 {% else %}
     {{ raise("Unknown salt_obs_flavor set") }}
 {% endif %}
