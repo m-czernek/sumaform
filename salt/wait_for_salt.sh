@@ -45,6 +45,7 @@ if [ -x /usr/bin/venv-salt-call ]; then
     echo "Attempting to reinstall venv-salt-minion"
     zypper rm -y venv-salt-minion
     zypper ar http://download.opensuse.org/repositories/systemsmanagement:saltstack:bundle:next:python311:testsuite/SLE_15/ salt_bundle_testsuite_repo
-    zypper in -y venv-salt-minion
+    zypper --no-gpg-checks in -y venv-salt-minion
     cp /tmp/grains /etc/venv-salt-minion/grains
+    venv-salt-call -h
 fi
