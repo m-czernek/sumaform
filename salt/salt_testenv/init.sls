@@ -131,9 +131,9 @@ salt_bundle_testsuite_repo:
     - refresh: True
 
 install_salt_bundle_testsuite:
+  pkg.removed:
+    - name: venv-salt-minion
   pkg.installed:
     - name: venv-salt-minion-testsuite
     - require:
       - pkgrepo: salt_bundle_testsuite_repo
-  cmd.run:
-    - name: systemctl restart venv-salt-minion
